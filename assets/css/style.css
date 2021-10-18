@@ -1,80 +1,136 @@
-*{
-    margin: 0;
-    padding: 0;
-
-}
-
-body{
-    overflow-x: hidden;
-    background: rgb(229, 229, 229);
-}
-
-#turnOn{
-    width: 140px;
-    height: 40px;
-    background: rgb(245, 87, 87);
-    border: none;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    font-size: 20px;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top-left-radius: none;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: none;
-}
-
-#turnOn:hover{
-    border: 1px solid rgb(245, 87, 87);
-    color: rgb(245, 87, 87);
-    background: white;
-    cursor: pointer;
-}
-
-#header{
-    position: absolute;
-    background: rgb(245, 87, 87);
-    width: 100%;
-    padding: 50px;
-    margin-left: 0;
-    padding-left: 0;
-    margin-right: 0;
-    padding-right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#totain{
-    position: absolute;
-    width: 80%;
-    height: 390px;
-    background: white;
-    top: 40px;
-    padding: 50px;
-    margin: 0;
-    padding: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 20px;
-    box-shadow: 2px 4px #ccc;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgb(245, 87, 87);
-    font-weight: bolder;
-    margin-top: 20px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        overflow-x: hidden;
+        background: rgb(229, 229, 229);
+    }
+    
+    #turnOn {
+        width: 140px;
+        height: 40px;
+        background: rgb(245, 87, 87);
+        border: none;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 20px;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-left-radius: none;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: none;
+    }
+    
+    #turnOn:hover {
+        border: 1px solid rgb(245, 87, 87);
+        color: rgb(245, 87, 87);
+        background: white;
+        cursor: pointer;
+    }
+    
+    #header {
+        position: absolute;
+        background: rgb(245, 87, 87);
+        width: 100%;
+        padding: 50px;
+        margin-left: 0;
+        padding-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #totain {
+        position: absolute;
+        width: 80%;
+        height: 390px;
+        background: white;
+        top: 40px;
+        padding: 50px;
+        margin: 0;
+        padding: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 20px;
+        box-shadow: 2px 4px #ccc;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .lampadas {
+        position: relative;
+        margin: auto;
+    }
+    
+    .lampadas .desligada {
+        position: relative;
+        display: block;
+        margin: auto;
+    }
+    
+    .lampadas .ligada {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity ease-in-out 0.5s;
+        -webkit-transition: opacity ease-in-out 0.5s;
+        -moz-transition: opacity ease-in-out 0.5s;
+        -ms-transition: opacity ease-in-out 0.5s;
+        -o-transition: opacity ease-in-out 0.5s;
+    }
+    /* ligada */
+    
+    .lampadas.on .ligada {
+        opacity: 1;
+    }
+    
+    .lampadas:hover {
+        cursor: url("../img/martelo.png"), auto;
+    }
+    /* botão alternado */
+    
+    #turnOn.desligado .ligar {
+        display: block;
+    }
+    
+    #turnOn.ops .ligar,
+    #turnOn.ops .desligar,
+    #turnOn.desligado .desligar,
+    #turnOn.desligado .eita,
+    #turnOn.ligado .ligar,
+    #turnOn.ligado .eita {
+        display: none;
+    }
+    
+    #turnOn .eita {
+        display: block
+    }
+    
+    #turnOn.ops {
+        color: rgb(245, 87, 87);
+        background: transparent;
+        border: 0;
+    }
+    
+    h1 {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(245, 87, 87);
+        font-weight: bolder;
+        margin-top: 20px;
+    }

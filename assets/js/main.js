@@ -1,40 +1,36 @@
-const turnOn = document.getElementById('turnOn');
-const lampada = document.getElementById('lampada');
-
-function lampQuebre() {
-    return lampada.src.indexOf('quebrada') > -1;
-}
-
-function lampOn() {
-    if (turnOn.innerHTML === 'Ligar') {
-        lampada.src = 'assets/img/ligada.jpg';
-        turnOn.innerHTML = 'Desligar';
-    } else if (turnOn.innerHTML === 'Desligar') {
-        lampada.src = 'assets/img/desligada.jpg';
-        turnOn.innerHTML = 'Ligar';
+// vanilla js
+// pega o botão com o id turnOn
+const turnOn = document.querySelector('#turnOn');
+// pega a div com a classe lampadas
+const lampadas = document.querySelector('.lampadas');
+// ao clicar ou tocar no botão troca a classe da div com a classe lampadas
+turnOn.addEventListener('click', () => {
+    // se não tiver a classe ops troca a classe
+    if (!turnOn.classList.contains('ops')) {
+        // troca a classe da div com a classe lampadas para on
+        lampadas.classList.toggle('on');
+        //  troca a classe do botão
+        turnOn.classList.toggle('ligado');
+        turnOn.classList.toggle('desligado');
     }
-}
 
-function drop() {
-    if (!lampQuebre()) {
-        lampada.src = 'assets/img/ligada.jpg';
-        turnOn.innerHTML = 'Desligar';
+});
+// ao clicar na lâmpada aparece uma lampada quebrada no lugar das outras
+lampadas.addEventListener('click', () => {
+    //troca a imagem da lampada desligada e lampada ligada para lampada quebrada 
+    //  caso a imagem da lampada quebrada assets/img/quebrada.jpg já exista, fazer nada
+    if (lampadas.querySelector('.lampada').src === 'assets/img/quebrada.jpg') {
+        // não faz nada
+    } else {
+        // troca a imagem da lampada desligada e lampada ligada para lampada quebrada
+        lampadas.querySelector('.lampada.ligada').src = 'assets/img/quebrada.jpg';
+        lampadas.querySelector('.lampada.desligada').src = 'assets/img/quebrada.jpg';
+        turnOn.classList.remove('ligado');
+        turnOn.classList.remove('desligado');
+        // adiciona a classe ops ao botão se ele ainda não tem essa classe
+        if (!turnOn.classList.contains('ops')) {
+            turnOn.classList.add('ops');
+        }
     }
-}
 
-function trap() {
-    if (!lampQuebre()) {
-        lampada.src = 'assets/img/desligada.jpg';
-        turnOn.innerHTML = 'Ligar';
-    }
-}
-
-const trop = function () {
-    lampada.src = 'assets/img/quebrada.jpg';
-    turnOn.innerHTML = 'Quebrou';
-}
-
-turnOn.addEventListener('click', lampOn);
-lampada.addEventListener('mousemove', drop);
-lampada.addEventListener('mouseleave', trap);
-lampada.addEventListener('dblclick', trop);
+});
